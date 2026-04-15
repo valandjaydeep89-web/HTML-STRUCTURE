@@ -3,112 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Components</title>
+<title>SaticShop</title>
 
 <style>
-/* STYLE SYSTEM */
 :root {
-    --primary: #1a1a1a;
-    --accent: #00c6ff;
-    --bg: #f4f7fb;
+    --primary: #0f172a;
+    --accent: #38bdf8;
 }
 
+/* BACKGROUND */
 body {
-    font-family: Arial, sans-serif;
-    background: var(--bg);
     margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3a8a, #0ea5e9);
+    color: white;
 }
 
 /* NAVBAR */
 .navbar {
-    background: var(--primary);
-    color: white;
-    padding: 15px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
 }
 
 .navbar a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    position: relative;
+    margin-left: 15px;
 }
 
-/* underline animation */
-.navbar a::after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: var(--accent);
-    left: 0;
-    bottom: -3px;
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 50px;
+    animation: fadeIn 1s ease-in;
+}
+
+/* PRODUCTS */
+.products {
+    padding: 20px;
+    text-align: center;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* GLASS CARD */
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 15px;
     transition: 0.3s;
+    animation: fadeUp 0.8s ease;
 }
 
-.navbar a:hover::after {
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* IMAGE */
+.card img {
     width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* TEXT */
+.price {
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 /* BUTTON */
 .btn {
-    background: var(--primary);
-    color: white;
-    padding: 10px 15px;
+    background: var(--accent);
+    color: black;
+    padding: 8px 15px;
     border: none;
     cursor: pointer;
+    border-radius: 6px;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: var(--accent);
     transform: scale(1.05);
 }
 
-/* PRODUCT CARD */
-.product-card {
-    background: white;
-    padding: 15px;
-    width: 220px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+/* FOOTER */
+footer {
     text-align: center;
-    transition: 0.3s;
+    padding: 15px;
+    margin-top: 20px;
 }
 
-/* card hover animation */
-.product-card:hover {
-    transform: translateY(-10px);
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
-/* image zoom effect */
-.product-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.product-card:hover img {
-    transform: scale(1.05);
-}
-
-.price {
-    font-weight: bold;
-    margin: 10px 0;
-    color: var(--primary);
-}
-
-/* container */
-.container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
 
@@ -116,34 +126,63 @@ body {
 
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <div class="navbar">
     <h2>SaticShop</h2>
     <div>
         <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Contact</a>
+        <a href="#products">Products</a>
+        <a href="#">Cart</a>
     </div>
 </div>
 
-<!-- Components -->
-<div class="container">
-
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500">
-        <h3>Headphones</h3>
-        <p class="price">₹4,999</p>
-        <button class="btn">Buy Now</button>
-    </div>
-
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
-        <h3>Smart Watch</h3>
-        <p class="price">₹2,499</p>
-        <button class="btn">Buy Now</button>
-    </div>
-
+<!-- HERO -->
+<div class="hero">
+    <h1>Welcome to SaticShop</h1>
+    <p>Modern Shopping Experience ✨</p>
 </div>
+
+<!-- PRODUCTS -->
+<div class="products" id="products">
+    <h2>Our Products</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500">
+            <h3>Smart Watch</h3>
+            <p class="price">₹2,499</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500">
+            <h3>Red Shoes</h3>
+            <p class="price">₹4,999</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500">
+            <h3>Gaming Laptop</h3>
+            <p class="price">₹1,50,000</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500">
+            <h3>RGB Keyboard</h3>
+            <p class="price">₹3,799</p>
+            <button class="btn">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 SaticShop</p>
+</footer>
 
 </body>
 </html>
